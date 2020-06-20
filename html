@@ -1,0 +1,64 @@
+#!/bin/bash
+
+TITLE="Files of $HOSTNAME"
+RIGHT_NOW=$(date +"%x %r %Z")
+TIME_STAMP="Update $RIGHT_NOW by $USER"
+CUSTOM_TITLE=""
+CUSTOME_FILE=""
+
+
+help()
+{
+	echo "html -d directory -f file | -h"
+        echo -e "\t-h show how to use html command"
+        echo -e "\t-d \"directory\" declare directories , to pass more than one directory use space as a separator e.g. html -d \"directory1 directory2\""
+        echo -e "\t-f \"file\" declare files, to pass more than one file use space as a separator e.g. html -f \"file1 file2\""
+        echo -e "\t-t test"
+        exit 1
+}
+
+while [ -n "$1" ];
+do
+        case "$1" in
+         -d )
+         shift
+         directory=$1
+         ;;
+         -f )
+         shift
+         file=$1
+         ;;
+         -h )
+         help
+         exit
+         ;;
+         ? )
+         echo "Wrong parameter"
+         help
+         exit 1
+         ;;
+        esac
+        shift
+done
+
+echo "Your directories: $directory"
+echo "Your files: $file"
+
+create_html()
+{
+        cat <<- _EOF_
+        <html>
+        <head>
+        $(css)
+        </head>
+        <body>
+        <h1>$TITLE</h1>
+        $(images)
+        $(music)
+        $(documents)
+        $(custom)
+        </body>
+        </html>
+_EOF_
+}
+
