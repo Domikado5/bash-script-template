@@ -1,11 +1,14 @@
 #!/bin/bash
 
 TITLE="Files of $HOSTNAME"
-RIGHT_NOW=$(date +"%x %r %Z")
-TIME_STAMP="Update $RIGHT_NOW by $USER"
+RIGHT_NOW=$(date +"%x - %H:%M")
 CUSTOM_TITLE=""
 CUSTOME_FILE=""
 
+function wrong_parameter {
+        echo "Wrong parameter"
+        echo "Use \"html -h\" for help"
+} 1>&2
 
 help()
 {
@@ -13,52 +16,92 @@ help()
         echo -e "\t-h show how to use html command"
         echo -e "\t-d \"directory\" declare directories , to pass more than one directory use space as a separator e.g. html -d \"directory1 directory2\""
         echo -e "\t-f \"file\" declare files, to pass more than one file use space as a separator e.g. html -f \"file1 file2\""
+        echo -e ""
         echo -e "\t-t test"
         exit 1
 }
 
-while [ -n "$1" ];
-do
-        case "$1" in
-         -d )
-         shift
-         directory=$1
-         ;;
-         -f )
-         shift
-         file=$1
-         ;;
-         -h )
-         help
-         exit
-         ;;
-         ? )
-         echo "Wrong parameter"
-         help
-         exit 1
-         ;;
-        esac
-        shift
-done
+create_dir()
+{
+        mkdir ~/File_list
+}
 
-echo "Your directories: $directory"
-echo "Your files: $file"
+download_css()
+{
+        wget -P ~/File_list https://raw.githubusercontent.com/Domikado5/bash-script-template/master/style.css
+} &> /dev/null
 
 create_html()
 {
-        cat <<- _EOF_
-        <html>
-        <head>
-        $(css)
-        </head>
-        <body>
-        <h1>$TITLE</h1>
-        $(images)
-        $(music)
-        $(documents)
-        $(custom)
-        </body>
-        </html>
-_EOF_
+        touch ~/File_list/index.html
 }
 
+while [ $1 ];
+do
+        if [ -d $1 ]
+        then DIRECTORY+=($1); shift
+        elif [ -f $1 ]
+        then FILE+=($1)
+        elif [[ $1 == "-h" ]]
+        then help; exit 1
+        else wrong_parameter; exit 2
+        fi
+done
+
+echo "Your directories: $DIRECTORY"
+echo "Your files: $FILE"
+
+
+### check if save directory exist
+if [ ! -d ~/File_list ]; then
+        create_dir
+fi
+
+### check if style.css exist
+if [ ! -f ~/File_list/style.css ]; then
+        echo "Pobieranie pliku CSS"
+        download_css
+        echo "Pobrano"
+fi
+
+### check if index.html exist
+if [ ! -f ~/File_list/index.html ]; then
+        create_html
+fi
+
+echo "<!DOCTYPE html>
+<html lang=\"en\">
+<head>
+    <meta charset=\"UTF-8\">
+    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">
+    <link rel=\"stylesheet\" href=\"style.css\"> 
+    <title>$TITLE</title>
+    </head>
+<body>
+    <nav>
+        <h1>$TITLE</h1>
+        <h1>$RIGHT_NOW</h1>
+    </nav>" > ~/File_list/index.html
+
+echo "    <section>
+        <h1>Images</h1>" 1>> ~/File_list/index.html
+
+pictures() {
+        find $DIRECTORY $FILE -type f -iname "*.png" -printf "<div class=\"element\"><div class=\"min\"><img src=\"%p\" alt=\"%P\"></div><p>Filename:</p><div class=\"name\">%P</div><p>Modified:</p><div class=\"mod\">%Td.%Tm.%TY %TH:%TM</div><p>Source:</p><div class=\"source\">%p</div><p>Attachment:</p><a href=\"file://%p\">Click me</a></div>\n" 1>> ~/File_list/index.html
+        echo "</section>" 1>> ~/File_list/index.html
+}
+
+music() {
+        echo ""
+}
+
+documents() {
+        echo ""
+}
+
+pictures
+
+echo "</body>
+</html>" 1>> ~/File_list/index.html
+
+firefox ~/File_list/index.html

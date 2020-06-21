@@ -1,5 +1,5 @@
 body{
-    width: 100vw;
+    width: 100%;
     height: auto;
     display: grid;
     grid-template-columns: 100%;
@@ -8,6 +8,10 @@ body{
     padding: 0;
     margin: 0;
     grid-row-gap: 10px;
+}
+
+nav{
+    font-size: 1.8em;
 }
 
 h1{
@@ -31,15 +35,6 @@ section{
     font-size: 1.5em;
 }
 
-div.element-img{
-    padding: 10px;
-    background-color: rgba(210, 210, 210, 0.5);
-    width: 440px;
-    display: grid;
-    grid-row-gap: 5px;
-    justify-items: center;
-}
-
 div.element{
     padding: 10px;
     background-color: rgba(210, 210, 210, 0.5);
@@ -49,4 +44,17 @@ div.element{
     grid-template-columns: 150px auto;
     justify-items: left;
     grid-column-gap: 5px;
+}
+
+div.min{
+    grid-column: 1/3;
+    width: 100px;
+    height: 100px;
+    place-self: center;
+}
+
+div.min{
+    max-width: 300px;
+    max-height: 300px;
+    height: auto;
 }
