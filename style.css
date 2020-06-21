@@ -53,7 +53,7 @@ div.min{
     place-self: center;
 }
 
-div.min{
+div.min img{
     max-width: 300px;
     max-height: 300px;
     height: auto;
