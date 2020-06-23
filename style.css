@@ -4,7 +4,7 @@ body{
     display: grid;
     grid-template-columns: 100%;
     justify-items: center;
-    background-color: bisque;
+    background-color: lightcoral;
     padding: 0;
     margin: 0;
     grid-row-gap: 10px;
@@ -31,19 +31,20 @@ section{
     grid-column: 100%;
     justify-items: center;
     grid-row-gap: 10px;
-    width: 80%;
+    width: 100%;
     font-size: 1.5em;
 }
 
 div.element{
     padding: 10px;
-    background-color: rgba(210, 210, 210, 0.5);
-    width: auto;
+    width: 90%;
+    border-bottom: 5px solid black;
     display: grid;
     grid-row-gap: 5px;
     grid-template-columns: 150px auto;
     justify-items: left;
     grid-column-gap: 5px;
+    overflow: hidden;
 }
 
 div.min{
@@ -51,8 +52,32 @@ div.min{
     place-self: center;
 }
 
+p{
+    color: black;
+}
+
 div.min img{
     max-width: 300px;
     max-height: 300px;
     height: auto;
+    filter: grayscale(100%);
+    transition: all 0.5s;
+}
+
+div.min img:hover{
+    filter: grayscale(0%);
+    box-shadow: black 5px 5px 10px;
+}
+
+a{
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    text-shadow: white 1px 1px 1px;
+    transition: all 0.5s;
+}
+
+a:hover{
+    color: white;
+    text-shadow: black 1px 1px 1px;
 }
