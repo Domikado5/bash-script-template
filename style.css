@@ -41,7 +41,7 @@ div.element{
     border-bottom: 5px solid black;
     display: grid;
     grid-row-gap: 5px;
-    grid-template-columns: 150px auto;
+    grid-template-columns: 200px auto;
     justify-items: left;
     grid-column-gap: 5px;
     overflow: hidden;

@@ -96,13 +96,13 @@ pictures() {
         <h1>Images</h1>" 1>> ~/File_list/index.html
         case $SORT in
         0)
-        find ${DIRECTORY[@]} ${FILE[@]} -type f \( -iname \*.png -o -iname \*.jpg -o -iname \*.gif -o -iname \*.jpeg \) -printf "<div class=\"element\"><div class=\"min\"><img src=\"%p\" alt=\"%P\"></div><p>Filename:</p><div class=\"name\">%P</div><p>Modified:</p><div class=\"mod\">%Td.%Tm.%TY %TH:%TM</div><p>Source:</p><div class=\"source\">%p</div><p>Attachment:</p><a href=\"file://%p\">Click me</a></div>\n" 1>> ~/File_list/index.html
+        find ${DIRECTORY[@]} ${FILE[@]} -type f \( -iname \*.png -o -iname \*.jpg -o -iname \*.gif -o -iname \*.jpeg \) -printf "<div class=\"element\"><div class=\"min\"><img src=\"%p\" alt=\"%f\"></div><p>Filename:</p><div class=\"name\">%f</div><p>Modified:</p><div class=\"mod\">%Td.%Tm.%TY %TH:%TM</div><p>Source:</p><div class=\"source\">%p</div><p>Attachment:</p><a href=\"file://%p\">Click me</a></div>\n" 1>> ~/File_list/index.html
         ;;
         1)
-        find ${DIRECTORY[@]} ${FILE[@]} -type f \( -iname \*.png -o -iname \*.jpg -o -iname \*.gif -o -iname \*.jpeg \) -printf "%P ~<div class=\"element\"><div class=\"min\"><img src=\"%p\" alt=\"%P\"></div><p>Filename:</p><div class=\"name\">%P</div><p>Modified:</p><div class=\"mod\">%Td.%Tm.%TY %TH:%TM</div><p>Source:</p><div class=\"source\">%p</div><p>Attachment:</p><a href=\"file://%p\">Click me</a></div>\n" | sort | cut -d "~" -f 2- 1>> ~/File_list/index.html
+        find ${DIRECTORY[@]} ${FILE[@]} -type f \( -iname \*.png -o -iname \*.jpg -o -iname \*.gif -o -iname \*.jpeg \) -printf "%f ~<div class=\"element\"><div class=\"min\"><img src=\"%p\" alt=\"%f\"></div><p>Filename:</p><div class=\"name\">%f</div><p>Modified:</p><div class=\"mod\">%Td.%Tm.%TY %TH:%TM</div><p>Source:</p><div class=\"source\">%p</div><p>Attachment:</p><a href=\"file://%p\">Click me</a></div>\n" | sort | cut -d "~" -f 2- 1>> ~/File_list/index.html
         ;;
         2)
-        find ${DIRECTORY[@]} ${FILE[@]} -type f \( -iname \*.png -o -iname \*.jpg -o -iname \*.gif -o -iname \*.jpeg \) -printf "%P ~<div class=\"element\"><div class=\"min\"><img src=\"%p\" alt=\"%P\"></div><p>Filename:</p><div class=\"name\">%P</div><p>Modified:</p><div class=\"mod\">%Td.%Tm.%TY %TH:%TM</div><p>Source:</p><div class=\"source\">%p</div><p>Attachment:</p><a href=\"file://%p\">Click me</a></div>\n" | sort -r | cut -d "~" -f 2- 1>> ~/File_list/index.html
+        find ${DIRECTORY[@]} ${FILE[@]} -type f \( -iname \*.png -o -iname \*.jpg -o -iname \*.gif -o -iname \*.jpeg \) -printf "%f ~<div class=\"element\"><div class=\"min\"><img src=\"%p\" alt=\"%f\"></div><p>Filename:</p><div class=\"name\">%f</div><p>Modified:</p><div class=\"mod\">%Td.%Tm.%TY %TH:%TM</div><p>Source:</p><div class=\"source\">%p</div><p>Attachment:</p><a href=\"file://%p\">Click me</a></div>\n" | sort -r | cut -d "~" -f 2- 1>> ~/File_list/index.html
         ;;
         esac
         echo "</section>" 1>> ~/File_list/index.html
@@ -113,13 +113,13 @@ music() {
         <h1>Music</h1>" 1>> ~/File_list/index.html
         case $SORT in
         0)
-        find ${DIRECTORY[@]} ${FILE[@]} -type f \( -iname \*.mp3 -o -iname \*.wav -o -iname \*.mp4 -o -iname \*.flac \) -printf "<div class=\"element\"><p>Filename:</p><div class=\"name\">%P</div><p>Modified:</p><div class=\"mod\">%Td.%Tm.%TY %TH:%TM</div><p>Source:</p><div class=\"source\">%p</div><p>Attachment:</p><a href=\"file://%p\">Click me</a></div>\n" 1>> ~/File_list/index.html
+        find ${DIRECTORY[@]} ${FILE[@]} -type f \( -iname \*.mp3 -o -iname \*.wav -o -iname \*.mp4 -o -iname \*.flac \) -printf "<div class=\"element\"><p>Filename:</p><div class=\"name\">%f</div><p>Modified:</p><div class=\"mod\">%Td.%Tm.%TY %TH:%TM</div><p>Source:</p><div class=\"source\">%p</div><p>Attachment:</p><a href=\"file://%p\">Click me</a></div>\n" 1>> ~/File_list/index.html
         ;;
         1)
-        find ${DIRECTORY[@]} ${FILE[@]} -type f \( -iname \*.mp3 -o -iname \*.wav -o -iname \*.mp4 -o -iname \*.flac \) -printf "%P ~<div class=\"element\"><p>Filename:</p><div class=\"name\">%P</div><p>Modified:</p><div class=\"mod\">%Td.%Tm.%TY %TH:%TM</div><p>Source:</p><div class=\"source\">%p</div><p>Attachment:</p><a href=\"file://%p\">Click me</a></div>\n" | sort | cut -d "~" -f 2- 1>> ~/File_list/index.html
+        find ${DIRECTORY[@]} ${FILE[@]} -type f \( -iname \*.mp3 -o -iname \*.wav -o -iname \*.mp4 -o -iname \*.flac \) -printf "%f ~<div class=\"element\"><p>Filename:</p><div class=\"name\">%f</div><p>Modified:</p><div class=\"mod\">%Td.%Tm.%TY %TH:%TM</div><p>Source:</p><div class=\"source\">%p</div><p>Attachment:</p><a href=\"file://%p\">Click me</a></div>\n" | sort | cut -d "~" -f 2- 1>> ~/File_list/index.html
         ;;
         2)
-        find ${DIRECTORY[@]} ${FILE[@]} -type f \( -iname \*.mp3 -o -iname \*.wav -o -iname \*.mp4 -o -iname \*.flac \) -printf "%P ~<div class=\"element\"><p>Filename:</p><div class=\"name\">%P</div><p>Modified:</p><div class=\"mod\">%Td.%Tm.%TY %TH:%TM</div><p>Source:</p><div class=\"source\">%p</div><p>Attachment:</p><a href=\"file://%p\">Click me</a></div>\n" | sort -r | cut -d "~" -f 2- 1>> ~/File_list/index.html
+        find ${DIRECTORY[@]} ${FILE[@]} -type f \( -iname \*.mp3 -o -iname \*.wav -o -iname \*.mp4 -o -iname \*.flac \) -printf "%f ~<div class=\"element\"><p>Filename:</p><div class=\"name\">%f</div><p>Modified:</p><div class=\"mod\">%Td.%Tm.%TY %TH:%TM</div><p>Source:</p><div class=\"source\">%p</div><p>Attachment:</p><a href=\"file://%p\">Click me</a></div>\n" | sort -r | cut -d "~" -f 2- 1>> ~/File_list/index.html
         ;;
         esac
         echo "</section>" 1>> ~/File_list/index.html
@@ -130,13 +130,13 @@ documents() {
         <h1>Documents</h1>" 1>> ~/File_list/index.html
         case $SORT in
         0)
-        find ${DIRECTORY[@]} ${FILE[@]} -type f \( -iname \*.pdf -o -iname \*.doc -o -iname \*.odt \) -printf "<div class=\"element\"><p>Filename:</p><div class=\"name\">%P</div><p>Modified:</p><div class=\"mod\">%Td.%Tm.%TY %TH:%TM</div><p>Source:</p><div class=\"source\">%p</div><p>Attachment:</p><a href=\"file://%p\">Click me</a></div>\n" 1>> ~/File_list/index.html
+        find ${DIRECTORY[@]} ${FILE[@]} -type f \( -iname \*.pdf -o -iname \*.doc -o -iname \*.odt \) -printf "<div class=\"element\"><p>Filename:</p><div class=\"name\">%f</div><p>Modified:</p><div class=\"mod\">%Td.%Tm.%TY %TH:%TM</div><p>Source:</p><div class=\"source\">%p</div><p>Attachment:</p><a href=\"file://%p\">Click me</a></div>\n" 1>> ~/File_list/index.html
         ;;
         1)
-        find ${DIRECTORY[@]} ${FILE[@]} -type f \( -iname \*.pdf -o -iname \*.doc -o -iname \*.odt \) -printf "%P ~<div class=\"element\"><p>Filename:</p><div class=\"name\">%P</div><p>Modified:</p><div class=\"mod\">%Td.%Tm.%TY %TH:%TM</div><p>Source:</p><div class=\"source\">%p</div><p>Attachment:</p><a href=\"file://%p\">Click me</a></div>\n" | sort | cut -d "~" -f 2- 1>> ~/File_list/index.html
+        find ${DIRECTORY[@]} ${FILE[@]} -type f \( -iname \*.pdf -o -iname \*.doc -o -iname \*.odt \) -printf "%f ~<div class=\"element\"><p>Filename:</p><div class=\"name\">%f</div><p>Modified:</p><div class=\"mod\">%Td.%Tm.%TY %TH:%TM</div><p>Source:</p><div class=\"source\">%p</div><p>Attachment:</p><a href=\"file://%p\">Click me</a></div>\n" | sort | cut -d "~" -f 2- 1>> ~/File_list/index.html
         ;;
         2)
-        find ${DIRECTORY[@]} ${FILE[@]} -type f \( -iname \*.pdf -o -iname \*.doc -o -iname \*.odt \) -printf "%P ~<div class=\"element\"><p>Filename:</p><div class=\"name\">%P</div><p>Modified:</p><div class=\"mod\">%Td.%Tm.%TY %TH:%TM</div><p>Source:</p><div class=\"source\">%p</div><p>Attachment:</p><a href=\"file://%p\">Click me</a></div>\n" | sort -r | cut -d "~" -f 2- 1>> ~/File_list/index.html
+        find ${DIRECTORY[@]} ${FILE[@]} -type f \( -iname \*.pdf -o -iname \*.doc -o -iname \*.odt \) -printf "%f ~<div class=\"element\"><p>Filename:</p><div class=\"name\">%f</div><p>Modified:</p><div class=\"mod\">%Td.%Tm.%TY %TH:%TM</div><p>Source:</p><div class=\"source\">%p</div><p>Attachment:</p><a href=\"file://%p\">Click me</a></div>\n" | sort -r | cut -d "~" -f 2- 1>> ~/File_list/index.html
         ;;
         esac
         echo "</section>" 1>> ~/File_list/index.html
@@ -149,13 +149,13 @@ custom() {
                 <h1>$ext</h1>" 1>> ~/File_list/index.html
                 case $SORT in
                 0)
-                find ${DIRECTORY[@]} ${FILE[@]} -type f -iname "*.$ext" -printf "<div class=\"element\"><p>Filename:</p><div class=\"name\">%P</div><p>Modified:</p><div class=\"mod\">%Td.%Tm.%TY %TH:%TM</div><p>Source:</p><div class=\"source\">%p</div><p>Attachment:</p><a href=\"file://%p\">Click me</a></div>\n" 1>> ~/File_list/index.html
+                find ${DIRECTORY[@]} ${FILE[@]} -type f -iname "*.$ext" -printf "<div class=\"element\"><p>Filename:</p><div class=\"name\">%f</div><p>Modified:</p><div class=\"mod\">%Td.%Tm.%TY %TH:%TM</div><p>Source:</p><div class=\"source\">%p</div><p>Attachment:</p><a href=\"file://%p\">Click me</a></div>\n" 1>> ~/File_list/index.html
                 ;;
                 1)
-                find ${DIRECTORY[@]} ${FILE[@]} -type f -iname "*.$ext" -printf "%P ~<div class=\"element\"><p>Filename:</p><div class=\"name\">%P</div><p>Modified:</p><div class=\"mod\">%Td.%Tm.%TY %TH:%TM</div><p>Source:</p><div class=\"source\">%p</div><p>Attachment:</p><a href=\"file://%p\">Click me</a></div>\n" | sort | cut -d "~" -f 2- 1>> ~/File_list/index.html
+                find ${DIRECTORY[@]} ${FILE[@]} -type f -iname "*.$ext" -printf "%f ~<div class=\"element\"><p>Filename:</p><div class=\"name\">%f</div><p>Modified:</p><div class=\"mod\">%Td.%Tm.%TY %TH:%TM</div><p>Source:</p><div class=\"source\">%p</div><p>Attachment:</p><a href=\"file://%p\">Click me</a></div>\n" | sort | cut -d "~" -f 2- 1>> ~/File_list/index.html
                 ;;
                 2)
-                find ${DIRECTORY[@]} ${FILE[@]} -type f -iname "*.$ext" -printf "%P ~<div class=\"element\"><p>Filename:</p><div class=\"name\">%P</div><p>Modified:</p><div class=\"mod\">%Td.%Tm.%TY %TH:%TM</div><p>Source:</p><div class=\"source\">%p</div><p>Attachment:</p><a href=\"file://%p\">Click me</a></div>\n" | sort -r | cut -d "~" -f 2- 1>> ~/File_list/index.html
+                find ${DIRECTORY[@]} ${FILE[@]} -type f -iname "*.$ext" -printf "%f ~<div class=\"element\"><p>Filename:</p><div class=\"name\">%f</div><p>Modified:</p><div class=\"mod\">%Td.%Tm.%TY %TH:%TM</div><p>Source:</p><div class=\"source\">%p</div><p>Attachment:</p><a href=\"file://%p\">Click me</a></div>\n" | sort -r | cut -d "~" -f 2- 1>> ~/File_list/index.html
                 ;;
                 esac
                 echo "</section>" 1>> ~/File_list/index.html
@@ -170,4 +170,4 @@ custom
 echo "</body>
 </html>" 1>> ~/File_list/index.html
 
-chromium ~/File_list/index.html
+firefox ~/File_list/index.html
