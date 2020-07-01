@@ -11,7 +11,9 @@ function wrong_parameter {
 
 help()
 {
-	echo "html [directory|file] | -h"
+	echo "html [directory|file|extension] | -h"
+        echo -e "\t Generate list of files in HTML format."
+        echo -e "\t Example usage: html ~/Downloads ~/Documents/file.png tex -a"
         echo -e "\t-h show help"
         echo -e "\t-a sort ascending (by file name)"
         echo -e "\t-d sort descending (by file name)"
